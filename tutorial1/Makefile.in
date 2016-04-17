@@ -1,11 +1,17 @@
 package = @PACKAGE_NAME@1
+CXX = @CXX@
+CPPFLAGS = @CPPFLAGS@
+CXXFLAGS = @CXXFLAGS@
+LIBS = @LIBS@
 
+# Using pkg-config is not a portable way to make this gcc command. Use LIBS?
 
-$(package): main.o
-	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ main.o
+$(package): main.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ main.cpp `pkg-config --cflags glfw3` `pkg-config --static --libs glfw3`
 
-clean:
-	rm *.o &> /dev/null
+clean: FORCE
+	-rm $(package) &> /dev/null
+	-rm *.o &> /dev/null
 
 all: $(package)
 
@@ -14,4 +20,6 @@ Makefile: Makefile.in ../config.status
 	../config.status $@
 
 ../config.status: ../configure
-	cd  .. && config.status --recheck
+	cd .. && config.status --recheck
+
+FORCE:

@@ -1,7 +1,7 @@
 # @configure_input@
 
 # Package specific substitution variables
-package = @PACKAGE_AGE@
+package = @PACKAGE_NAME@
 version = @PACKAGE_VERSION@
 tarname = @PACKAGE_TARNAME@
 distdir = $(tarname)-$(distdir)
@@ -11,11 +11,11 @@ prefix = @prefix@
 exec_prefix = @exec_prefix@
 bindir = @bindir@
 
-tutorial1:
+tutorial1: FORCE
 	cd tutorial1 && $(MAKE) all
 
 clean:
-	rm *.o &> /dev/null
+	-rm *.o &> /dev/null
 	cd tutorial1 && $(MAKE) clean
 
 all: tutorial1
@@ -27,3 +27,5 @@ Makefile: Makefile.in config.status
 
 config.status: configure
 	- ./config.status --recheck
+
+FORCE:

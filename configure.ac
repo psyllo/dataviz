@@ -14,6 +14,10 @@ AC_PROG_CXX
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])
+AC_CHECK_HEADERS([GLFW/glfw3.h])
+
+AC_SEARCH_LIBS([glfwInit], [glfw])
+
 
 # Checks for typedefs, structures, and compiler characteristics.
 
@@ -22,4 +26,3 @@ AC_CHECK_HEADERS([stdlib.h])
 AC_CONFIG_FILES([Makefile
                  tutorial1/Makefile])
 AC_OUTPUT
-d
