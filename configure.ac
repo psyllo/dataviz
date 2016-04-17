@@ -11,12 +11,13 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CXX
 
 # Checks for libraries.
+PKG_PROG_PKG_CONFIG
+PKG_CHECK_MODULES([GLFW], [glfw3 >= 3.0.4])
+#AC_SEARCH_LIBS([glfwInit], [glfw])
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])
-AC_CHECK_HEADERS([GLFW/glfw3.h])
-
-AC_SEARCH_LIBS([glfwInit], [glfw])
+#AC_CHECK_HEADERS([GLFW/glfw3.h])
 
 
 # Checks for typedefs, structures, and compiler characteristics.

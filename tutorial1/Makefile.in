@@ -3,11 +3,12 @@ CXX = @CXX@
 CPPFLAGS = @CPPFLAGS@
 CXXFLAGS = @CXXFLAGS@
 LIBS = @LIBS@
+DEFS = @DEFS@
 
 # Using pkg-config is not a portable way to make this gcc command. Use LIBS?
 
 $(package): main.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ main.cpp `pkg-config --cflags glfw3` `pkg-config --static --libs glfw3`
+	$(CXX) $(CPPFLAGS) $(DEFS) $(CXXFLAGS) -o $@ main.cpp `pkg-config --cflags glfw3` `pkg-config --static --libs glfw3`
 
 clean: FORCE
 	-rm $(package) &> /dev/null
