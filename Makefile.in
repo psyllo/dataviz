@@ -1,0 +1,29 @@
+# @configure_input@
+
+# Package specific substitution variables
+package = @PACKAGE_AGE@
+version = @PACKAGE_VERSION@
+tarname = @PACKAGE_TARNAME@
+distdir = $(tarname)-$(distdir)
+
+# Prefix-specific substitution variables
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+
+tutorial1:
+	cd tutorial1 && $(MAKE) all
+
+clean:
+	rm *.o &> /dev/null
+	cd tutorial1 && $(MAKE) clean
+
+all: tutorial1
+
+
+# Regenerate the Makefile if Makefile.in has changed
+Makefile: Makefile.in config.status
+	./config.status $@
+
+config.status: configure
+	- ./config.status --recheck

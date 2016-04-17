@@ -1,0 +1,17 @@
+package = @PACKAGE_NAME@1
+
+
+$(package): main.o
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -o $@ main.o
+
+clean:
+	rm *.o &> /dev/null
+
+all: $(package)
+
+# Regenerate the Makefile if Makefile.in has changed
+Makefile: Makefile.in ../config.status
+	../config.status $@
+
+../config.status: ../configure
+	cd  .. && config.status --recheck
