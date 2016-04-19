@@ -1,4 +1,4 @@
 #ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = tutorial1
+SUBDIRS = tutorial1 tutorial2
 #AM_CFLAGS = $(GLFW_CFLAGS)
 #AM_LDFLAGS = $(GLFW_LDLAGS)

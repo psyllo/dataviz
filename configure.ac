@@ -21,7 +21,7 @@ AC_PROG_RANLIB
 # Checks for libraries.
 PKG_PROG_PKG_CONFIG
 PKG_CHECK_MODULES([GLFW], [glfw3 >= 3.0.4])
-AC_SEARCH_LIBS([glfwInit], [glfw3]) # possibly redundant
+AC_SEARCH_LIBS([glfwInit], [glfw3]) # builds mini program to verify
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])
@@ -31,7 +31,7 @@ AC_CHECK_HEADERS([GLFW/glfw3.h])
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
-
 AC_CONFIG_FILES([Makefile
-                 tutorial1/Makefile])
+                 tutorial1/Makefile
+                 tutorial2/Makefile])
 AC_OUTPUT
