@@ -7,5 +7,5 @@ typedef struct {
 } Vertex;
 
 void drawPoint(Vertex v, GLfloat size);
-
-void drawPointsDemo(int width, int height);
+void drawLineSegment(Vertex v1, Vertex v2, GLfloat width);
+void drawLineStrip(Vertex v[], uint v_size, GLfloat width);

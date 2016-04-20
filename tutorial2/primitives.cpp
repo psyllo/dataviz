@@ -10,11 +10,26 @@ void drawPoint(Vertex v, GLfloat size) {
   glEnd();
 }
 
-void drawPointsDemo(int width, int height) {
-  GLfloat size = 5.0f;
+void drawLineSegment(Vertex v1, Vertex v2, GLfloat width) {
+  glLineWidth(width);
+  glBegin(GL_LINES);
 
-  for(GLfloat x = 0.0f; x <= 1.0f; x += 0.2f, size += 5) {
-    Vertex v = {x, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-    drawPoint(v, size);
+  glColor4f(v1.r, v1.g, v1.b, v1.a);
+  glVertex3f(v1.x, v1.y, v1.z);
+  glColor4f(v2.r, v2.g, v2.b, v2.a);
+  glVertex3f(v2.x, v2.y, v2.z);
+
+  glEnd();
+}
+
+void drawLineStrip(Vertex v[], uint v_size, GLfloat width) {
+  glLineWidth(width);
+  glBegin(GL_LINE_STRIP);
+
+  for(uint i = 0; i < v_size; i++) {
+    glColor4f(v[i].r, v[i].g, v[i].b, v[i].a);
+    glVertex3f(v[i].x, v[i].y, v[i].z);
   }
+
+  glEnd();
 }
